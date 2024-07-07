@@ -20,19 +20,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en" suppressHydrationWarning>
-        <body
-          className={`${GeistSans.variable}${GeistMono.variable}`}
-          suppressHydrationWarning
-        >
-          <TRPCReactProvider>
-            <ThemeProvider attribute="class" defaultTheme="dark">
-              {children}
-            </ThemeProvider>
-          </TRPCReactProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${GeistSans.variable}${GeistMono.variable}`}
+        suppressHydrationWarning
+      >
+        <TRPCReactProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark">
+            {children}
+          </ThemeProvider>
+        </TRPCReactProvider>
+      </body>
+    </html>
   );
 }

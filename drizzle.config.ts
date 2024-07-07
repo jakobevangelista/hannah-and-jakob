@@ -6,7 +6,7 @@ export default {
   schema: "./src/server/db/schema.ts",
   driver: "mysql2",
   dbCredentials: {
-    uri: env.DATABASE_URL,
+    uri: "plsno",
   },
   tablesFilter: ["liftinglogic_*"],
 } satisfies Config;

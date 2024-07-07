@@ -33,7 +33,6 @@ export const createTRPCContext = async (opts: { headers: Headers }) => {
 
   return {
     db,
-    auth: auth(),
     ...opts,
   };
 };
@@ -89,18 +88,3 @@ export const createTRPCRouter = t.router;
  * are logged in.
  */
 export const publicProcedure = t.procedure;
-
-const enforcedUserIsAuthed = t.middleware(({ ctx, next }) => {
-  if (!ctx.auth.userId) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
-  }
-
-  return next({
-    ctx: {
-      // infers the `session` as non-nullable
-      user: { ...ctx.auth, user: ctx.auth.userId },
-    },
-  });
-});
-
-export const protectedProcedure = t.procedure.use(enforcedUserIsAuthed);
